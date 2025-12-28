@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /sparsh-enterprises/
+
+# 1️⃣ Redirect direct .php requests to clean URLs
+RewriteCond %{THE_REQUEST} \s/+sparsh-enterprises/([^.]+)\.php [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# 2️⃣ Internally map clean URLs to .php files
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^/]+)$ $1.php [L]

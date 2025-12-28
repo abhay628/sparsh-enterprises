@@ -1,0 +1,823 @@
+/* Eligibility Calculator Styles */
+
+/* Calculator Section */
+.calculator-section {
+    padding: 4rem 0;
+    background: var(--gray-light);
+}
+
+.calculator-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.calculator-form {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.calculator-form h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.calculator-form p {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.calculator-form-el {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.8rem;
+    border: 2px solid var(--gray-medium);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+    background: var(--white);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 84, 166, 0.1);
+}
+
+.form-group input.error,
+.form-group select.error {
+    border-color: var(--error);
+}
+
+.error-message {
+    color: var(--error);
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+.calculate-btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.calculate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.calculate-btn i {
+    font-size: 1.2rem;
+}
+
+/* Results Section */
+.calculator-results {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.calculator-results h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.result-card {
+    background: var(--gray-light);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.result-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.result-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-icon i {
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+.result-content h3 {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.result-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+    line-height: 1;
+}
+
+.result-unit {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.results-details {
+    background: var(--gray-light);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+}
+
+.results-details h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+}
+
+.detail-label {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    min-width: 120px;
+}
+
+.detail-value {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.detail-unit {
+    color: var(--text-light);
+    font-size: 0.8rem;
+    margin-left: 0.25rem;
+}
+
+.eligibility-status {
+    margin-bottom: 2rem;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+}
+
+.status-indicator.eligible {
+    background: rgba(76, 175, 80, 0.1);
+    color: var(--success);
+    border: 2px solid var(--success);
+}
+
+.status-indicator.warning {
+    background: rgba(255, 152, 0, 0.1);
+    color: var(--warning);
+    border: 2px solid var(--warning);
+}
+
+.status-indicator.not-eligible {
+    background: rgba(244, 67, 54, 0.1);
+    color: var(--error);
+    border: 2px solid var(--error);
+}
+
+.status-indicator i {
+    font-size: 1.2rem;
+}
+
+.area-warning {
+    background: rgba(255, 152, 0, 0.1);
+    color: var(--warning);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    border: 2px solid var(--warning);
+}
+
+.area-warning i {
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+}
+
+.area-warning span {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-secondary {
+    background: var(--gray-medium);
+    color: var(--text-dark);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    background: var(--gray-medium);
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Criteria Section */
+.criteria-section {
+    padding: 4rem 0;
+    background: var(--white);
+}
+
+.criteria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.criteria-card {
+    background: var(--gray-light);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.criteria-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.criteria-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.criteria-icon i {
+    font-size: 2rem;
+    color: var(--white);
+}
+
+.criteria-card h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.criteria-card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.criteria-card li {
+    padding: 0.5rem 0;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Benefits Section */
+.benefits-section {
+    padding: 4rem 0;
+    background: var(--gray-light);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.benefit-item {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+.benefit-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.benefit-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.benefit-icon i {
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+.benefit-item h3 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.benefit-item p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .calculator-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .calculator-form,
+    .calculator-results {
+        padding: 2rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .results-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+    
+    .details-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .criteria-grid,
+    .benefits-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .calculator-section {
+        padding: 2.5rem 0;
+    }
+    
+    .calculator-form,
+    .calculator-results {
+        padding: 1.5rem;
+    }
+    
+    .calculator-form h2 {
+        font-size: 1.8rem;
+    }
+    
+    .calculator-form p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+        font-size: 0.9rem;
+    }
+    
+    .form-group input,
+    .form-group select {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+    
+    .calculate-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .calculator-results h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .result-card {
+        padding: 1.2rem;
+    }
+    
+    .result-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 0.8rem;
+    }
+    
+    .result-icon i {
+        font-size: 1.2rem;
+    }
+    
+    .result-content h3 {
+        font-size: 0.9rem;
+    }
+    
+    .result-value {
+        font-size: 1.5rem;
+    }
+    
+    .result-unit {
+        font-size: 0.8rem;
+    }
+    
+    .results-details {
+        padding: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .results-details h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .details-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+    
+    .detail-item {
+        padding: 0.4rem 0;
+    }
+    
+    .detail-label {
+        min-width: 100px;
+        font-size: 0.85rem;
+    }
+    
+    .detail-value {
+        font-size: 0.9rem;
+    }
+    
+    .detail-unit {
+        font-size: 0.75rem;
+    }
+    
+    .status-indicator {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+        gap: 0.8rem;
+    }
+    
+    .status-indicator i {
+        font-size: 1rem;
+    }
+    
+    .area-warning {
+        padding: 0.8rem;
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    .area-warning i {
+        font-size: 1rem;
+    }
+    
+    .area-warning span {
+        font-size: 0.85rem;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    
+    .btn-secondary,
+    .btn-primary {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+        min-width: 200px;
+        justify-content: center;
+    }
+    
+    .criteria-section,
+    .benefits-section {
+        padding: 2.5rem 0;
+    }
+    
+    .criteria-grid,
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    
+    .criteria-card,
+    .benefit-item {
+        padding: 1.5rem;
+    }
+    
+    .criteria-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 1rem;
+    }
+    
+    .criteria-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .criteria-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .criteria-card li {
+        font-size: 0.85rem;
+        padding: 0.4rem 0;
+    }
+    
+    .benefit-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 0.8rem;
+    }
+    
+    .benefit-icon i {
+        font-size: 1.2rem;
+    }
+    
+    .benefit-item h3 {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .benefit-item p {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculator-form,
+    .calculator-results {
+        padding: 1.2rem;
+    }
+    
+    .calculator-form h2 {
+        font-size: 1.6rem;
+    }
+    
+    .calculator-form p {
+        font-size: 0.9rem;
+    }
+    
+    .calculate-btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .calculator-results h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .results-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+    
+    .result-card {
+        padding: 1rem;
+    }
+    
+    .result-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 0.6rem;
+    }
+    
+    .result-icon i {
+        font-size: 1rem;
+    }
+    
+    .result-content h3 {
+        font-size: 0.85rem;
+    }
+    
+    .result-value {
+        font-size: 1.3rem;
+    }
+    
+    .result-unit {
+        font-size: 0.75rem;
+    }
+    
+    .results-details {
+        padding: 1rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .results-details h3 {
+        font-size: 1rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .detail-label {
+        min-width: 80px;
+        font-size: 0.8rem;
+    }
+    
+    .detail-value {
+        font-size: 0.85rem;
+    }
+    
+    .detail-unit {
+        font-size: 0.7rem;
+    }
+    
+    .status-indicator {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+        gap: 0.6rem;
+    }
+    
+    .area-warning {
+        padding: 0.6rem;
+        gap: 0.6rem;
+    }
+    
+    .area-warning span {
+        font-size: 0.8rem;
+    }
+    
+    .criteria-card,
+    .benefit-item {
+        padding: 1.2rem;
+    }
+    
+    .criteria-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 0.8rem;
+    }
+    
+    .criteria-icon i {
+        font-size: 1.2rem;
+    }
+    
+    .criteria-card h3 {
+        font-size: 1rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .criteria-card li {
+        font-size: 0.8rem;
+        padding: 0.3rem 0;
+    }
+    
+    .benefit-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 0.6rem;
+    }
+    
+    .benefit-icon i {
+        font-size: 1rem;
+    }
+    
+    .benefit-item h3 {
+        font-size: 0.9rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .benefit-item p {
+        font-size: 0.8rem;
+    }
+}

@@ -1,0 +1,894 @@
+/* Responsive Design for Sparsh Enterprises Solar Website */
+
+/* Mobile Brand Logo Adjustments */
+@media (max-width: 600px) {
+    .brand-logo {
+        font-size: 1rem !important;
+    }
+    
+    .brand-text {
+        display: none !important;
+    }
+    
+    .logo-img {
+        height: 54px !important;
+    }
+}
+
+/* Large Tablets and Desktops (1024px and below) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .nav-container {
+        padding: 0 15px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .carousel-content h1 {
+        font-size: 3rem;
+    }
+    
+    .carousel-content p {
+        font-size: 1.1rem;
+    }
+    
+    .solar-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .appointment-content,
+    .about-content,
+    .choose-content {
+        gap: 3rem;
+    }
+    
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+    /* Header Responsive */
+    .nav-container {
+        position: relative;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: var(--white);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 2rem;
+        transition: left 0.3s ease;
+        box-shadow: var(--shadow);
+        z-index: 999;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-link {
+        display: block;
+        padding: 1rem;
+        font-size: 1.1rem;
+        border-bottom: 1px solid var(--gray-medium);
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-toggle.active .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .nav-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav-toggle.active .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+    
+    /* Hero Section Responsive */
+    .hero-section {
+        height: 70vh;
+        margin-top: 0px;
+    }
+    
+    .carousel-content {
+        padding: 0 1rem;
+        width: 100%;
+    }
+    
+    .carousel-content h1 {
+        font-size: 2.2rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .carousel-content p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .carousel-controls {
+        display: none;
+    }
+    
+    .carousel-indicators {
+        bottom: 1rem;
+    }
+    
+    /* Section Padding Responsive */
+    .solar-systems,
+    .features,
+    .appointment,
+    .about-us,
+    .products-services,
+    .why-choose-us,
+    .certifications {
+        padding: 3rem 0;
+    }
+    
+    /* Solar Systems Responsive */
+    .solar-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .solar-card {
+        padding: 2rem;
+    }
+    
+    .solar-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    /* Features Responsive */
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .feature-item {
+        padding: 1.5rem 1rem;
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .feature-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .feature-item h3 {
+        font-size: 1.1rem;
+    }
+    
+    /* Appointment Section Responsive */
+    .appointment-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .appointment-info h2 {
+        font-size: 2rem;
+    }
+    
+    .appointment-info p {
+        font-size: 1rem;
+    }
+    
+    .contact-form {
+        padding: 2rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .submit-btn {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+    
+    /* About Us Responsive */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .about-text h2 {
+        font-size: 2rem;
+    }
+    
+    .experience-badge {
+        padding: 0.8rem 1.5rem;
+    }
+    
+    .experience-badge .years {
+        font-size: 1.5rem;
+    }
+    
+    .about-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    
+    .stat-item {
+        padding: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    /* Products & Services Responsive */
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .product-category {
+        padding: 2rem;
+    }
+    
+    .product-category h3 {
+        font-size: 1.3rem;
+    }
+    
+    /* Why Choose Us Responsive */
+    .choose-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .choose-main h3 {
+        font-size: 1.5rem;
+    }
+    
+    .choose-benefits {
+        gap: 1rem;
+    }
+    
+    .benefit-card {
+        padding: 1.5rem;
+    }
+    
+    .benefit-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .benefit-icon i {
+        font-size: 1.2rem;
+    }
+    
+    .benefit-card h4 {
+        font-size: 1.1rem;
+    }
+    
+    /* Certifications Responsive */
+    .certifications {
+        padding: 3rem 0;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .certifications-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .certification-card {
+        padding: 1.5rem;
+    }
+    
+    .certification-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 1rem;
+    }
+    
+    .certification-img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .certification-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .certification-card p {
+        font-size: 0.9rem;
+    }
+    
+    /* Footer Responsive */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .footer-section {
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer-logo {
+        justify-content: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .contact-info {
+        align-items: center;
+    }
+}
+
+/* Mobile Phones (480px and below) */
+@media (max-width: 480px) {
+    /* Base Typography Responsive */
+    body {
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .section-title::after {
+        width: 40px;
+        bottom: -8px;
+    }
+    
+    /* Header Responsive */
+    .navbar {
+        padding: 0.8rem 0;
+    }
+    
+    .logo-img {
+        height: 30px;
+    }
+    
+    .company-name {
+        font-size: 1rem;
+    }
+    
+    /* Hero Section Responsive */
+    .hero-section {
+        height: 60vh;
+        margin-top: 0px;
+    }
+    
+    .carousel-content h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .carousel-content p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    .cta-button {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.85rem;
+    }
+    
+    .carousel-indicators {
+        bottom: 0.5rem;
+    }
+    
+    .indicator {
+        width: 8px;
+        height: 8px;
+    }
+    
+    /* Solar Systems Responsive */
+    .solar-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .solar-card {
+        padding: 1.5rem;
+    }
+    
+    .card-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+    }
+    
+    .card-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .solar-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .solar-card p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    .benefits-list li {
+        font-size: 0.9rem;
+        padding: 0.3rem 0;
+    }
+    
+    /* Features Responsive */
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .feature-item {
+        padding: 1.2rem;
+    }
+    
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 1rem;
+    }
+    
+    .feature-icon i {
+        font-size: 1.3rem;
+    }
+    
+    .feature-item h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .feature-item p {
+        font-size: 0.85rem;
+    }
+    
+    /* Appointment Section Responsive */
+    .appointment-info h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    .appointment-info p {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .appointment-benefits {
+        gap: 0.8rem;
+    }
+    
+    .benefit-item {
+        gap: 0.8rem;
+    }
+    
+    .benefit-item i {
+        font-size: 1rem;
+    }
+    
+    .benefit-item span {
+        font-size: 0.9rem;
+    }
+    
+    .contact-form {
+        padding: 1.5rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.7rem;
+        font-size: 0.85rem;
+    }
+    
+    .submit-btn {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+    
+    /* About Us Responsive */
+    .about-text h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .experience-badge {
+        padding: 0.7rem 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .experience-badge .years {
+        font-size: 1.3rem;
+    }
+    
+    .experience-badge .text {
+        font-size: 0.9rem;
+    }
+    
+    .about-text p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    .about-stats {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        margin-top: 1.5rem;
+    }
+    
+    .stat-item {
+        padding: 0.8rem;
+    }
+    
+    .stat-number {
+        font-size: 1.3rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+    
+    .about-image img {
+        height: 250px;
+        object-fit: cover;
+    }
+    
+    /* Products & Services Responsive */
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .product-category {
+        padding: 1.5rem;
+    }
+    
+    .category-header i {
+        font-size: 2.5rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .category-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .product-list li {
+        font-size: 0.9rem;
+        padding: 0.4rem 0;
+        padding-left: 1.2rem;
+    }
+    
+    /* Why Choose Us Responsive */
+    .choose-main h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .choose-main p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    .choose-benefits {
+        gap: 0.8rem;
+    }
+    
+    .benefit-card {
+        padding: 1.2rem;
+    }
+    
+    .benefit-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 0.8rem;
+    }
+    
+    .benefit-icon i {
+        font-size: 1rem;
+    }
+    
+    .benefit-card h4 {
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .benefit-card p {
+        font-size: 0.8rem;
+    }
+    
+    /* Footer Responsive */
+    .footer {
+        padding: 2rem 0 0.5rem;
+    }
+    
+    .footer-section {
+        margin-bottom: 1rem;
+    }
+    
+    .footer-logo {
+        margin-bottom: 0.8rem;
+    }
+    
+    .footer-logo-img {
+        height: 30px;
+    }
+    
+    .footer-section h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .footer-section h4 {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .footer-section p {
+        font-size: 0.85rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .social-links {
+        gap: 0.8rem;
+    }
+    
+    .social-link {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    .footer-links li {
+        margin-bottom: 0.4rem;
+    }
+    
+    .footer-links a {
+        font-size: 0.85rem;
+    }
+    
+    .contact-item {
+        gap: 0.8rem;
+        font-size: 0.85rem;
+    }
+    
+    .contact-item i {
+        font-size: 0.9rem;
+    }
+    
+    .footer-bottom {
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+    }
+    
+    .footer-bottom p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Small Mobile Phones (320px and below) */
+@media (max-width: 320px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .nav-container {
+        padding: 0 10px;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .carousel-content h1 {
+        font-size: 1.6rem;
+    }
+    
+    .carousel-content p {
+        font-size: 0.8rem;
+    }
+    
+    .company-name {
+        font-size: 0.9rem;
+    }
+    
+    .solar-card,
+    .feature-item,
+    .contact-form,
+    .product-category,
+    .benefit-card {
+        padding: 1rem;
+    }
+    
+    .appointment-info h2,
+    .about-text h2 {
+        font-size: 1.6rem;
+    }
+    
+    .choose-main h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* High DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .logo-img,
+    .footer-logo-img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .header,
+    .carousel-controls,
+    .carousel-indicators,
+    .appointment,
+    .footer {
+        display: none;
+    }
+    
+    .hero-section {
+        height: auto;
+        margin-top: 0;
+    }
+    
+    .carousel-content {
+        position: static;
+        transform: none;
+        background: var(--white);
+        color: var(--text-dark);
+        padding: 2rem;
+    }
+    
+    .carousel-content h1,
+    .carousel-content p {
+        text-shadow: none;
+        color: var(--text-dark);
+    }
+    
+    .cta-button {
+        background: var(--primary-color);
+        color: var(--white);
+        border: 2px solid var(--primary-color);
+    }
+}
+
+/* Landscape Mode for Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero-section {
+        height: 80vh;
+    }
+    
+    .carousel-content h1 {
+        font-size: 2rem;
+    }
+    
+    .carousel-content p {
+        font-size: 0.9rem;
+    }
+    
+    .nav-menu {
+        padding: 1rem;
+    }
+    
+    .nav-link {
+        padding: 0.7rem;
+        font-size: 1rem;
+    }
+}
+
+/* Light Theme Enhancement */
+@media (prefers-color-scheme: light) {
+    :root {
+        --text-dark: #2c3e50;
+        --text-light: #5a6c7d;
+        --white: #ffffff;
+        --gray-light: #f8f9fa;
+        --gray-medium: #e9ecef;
+        --shadow: 0 2px 10px rgba(0, 84, 166, 0.1);
+        --shadow-hover: 0 5px 20px rgba(0, 84, 166, 0.15);
+    }
+    
+    .header {
+        background: var(--white);
+        box-shadow: 0 2px 10px rgba(0, 84, 166, 0.1);
+    }
+    
+    .solar-card,
+    .feature-item,
+    .contact-form,
+    .benefit-card,
+    .product-category,
+    .stat-item {
+        background: var(--white);
+        color: var(--text-dark);
+        box-shadow: var(--shadow);
+    }
+    
+    .solar-card:hover,
+    .feature-item:hover,
+    .contact-form:hover,
+    .benefit-card:hover,
+    .product-category:hover,
+    .stat-item:hover {
+        box-shadow: var(--shadow-hover);
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        background: var(--white);
+        color: var(--text-dark);
+        border-color: var(--gray-medium);
+        box-shadow: 0 1px 3px rgba(0, 84, 166, 0.1);
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(0, 84, 166, 0.1);
+    }
+    
+    .nav-menu {
+        background: var(--white);
+        box-shadow: var(--shadow);
+    }
+    
+    .nav-link {
+        color: var(--text-dark);
+    }
+    
+    .nav-link:hover {
+        color: var(--primary-color);
+        background: var(--gray-light);
+    }
+}
