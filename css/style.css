@@ -163,6 +163,77 @@ nav ul a.active {
     background-color: var(--gray-light) !important;
 }
 
+/* Dropdown Menu Styling */
+.dropdown-content {
+    background-color: var(--white) !important;
+    box-shadow: 0 4px 12px rgba(0, 84, 166, 0.15) !important;
+    border-radius: 8px !important;
+    margin-top: 0 !important;
+    min-width: 250px !important;
+}
+
+.dropdown-content li > a {
+    color: var(--text-dark) !important;
+    padding: 14px 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    transition: var(--transition) !important;
+}
+
+.dropdown-content li > a > i {
+    margin-right: 15px !important;
+    color: var(--primary-color) !important;
+}
+
+.dropdown-content li > a:hover {
+    background-color: var(--gray-light) !important;
+    color: var(--primary-color) !important;
+}
+
+.dropdown-content li.divider {
+    margin: 8px 0 !important;
+}
+
+/* Collapsible Submenu in Sidenav */
+.sidenav .collapsible {
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+}
+
+.sidenav .collapsible-header {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 32px !important;
+    color: var(--text-dark) !important;
+}
+
+.sidenav .collapsible-header i.material-icons {
+    color: var(--primary-color) !important;
+    margin-right: 32px !important;
+}
+
+.sidenav .collapsible-body {
+    background-color: var(--gray-light) !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.sidenav .collapsible-body ul {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.sidenav .collapsible-body li a {
+    padding-left: 64px !important;
+    color: var(--text-dark) !important;
+    font-size: 0.95rem !important;
+}
+
+.sidenav .collapsible-body li a:hover {
+    background-color: rgba(0, 84, 166, 0.1) !important;
+}
+
 .navbar-fixed {
     z-index: 997;
 }
@@ -825,6 +896,10 @@ nav ul a.active {
     font-weight: 700;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .page-header p {

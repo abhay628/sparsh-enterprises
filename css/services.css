@@ -1,0 +1,567 @@
+/* Services Pages Styles */
+
+/* Service Header */
+
+
+/* Service Overview */
+.service-overview {
+    padding: 4rem 0;
+    background: var(--white);
+}
+
+.service-overview h2 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.service-overview .flow-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.service-image-box {
+    background: var(--gray-light);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.service-image-box i.large {
+    font-size: 6rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.service-image-box h5 {
+    color: var(--text-dark);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Feature Highlight */
+.feature-highlight {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--gray-light);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-top: 2rem;
+}
+
+.feature-highlight i {
+    font-size: 3rem;
+    color: var(--secondary-color);
+}
+
+.feature-highlight h5 {
+    margin: 0;
+    color: var(--primary-color);
+}
+
+/* Stats Mini */
+.stats-mini {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.stat-mini {
+    text-align: center;
+}
+
+.stat-mini h4 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.stat-mini p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Section Subtitle */
+.section-subtitle {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* Info Box */
+.info-box {
+    background: #e3f2fd;
+    border-left: 4px solid var(--primary-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.info-box i {
+    color: var(--primary-color);
+    font-size: 2rem;
+}
+
+/* Component List */
+.component-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.component-list li {
+    padding: 0.3rem 0;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Subsidy Section */
+.subsidy-section {
+    padding: 4rem 0;
+    background: var(--gray-light);
+}
+
+.subsidy-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    height: 100%;
+}
+
+.subsidy-card h4 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.subsidy-card table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.subsidy-card th {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 1rem;
+    text-align: left;
+}
+
+.subsidy-card td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--gray-medium);
+}
+
+/* Benefit List */
+.benefit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.benefit-item i {
+    color: var(--secondary-color);
+    font-size: 2rem;
+}
+
+.benefit-item h6 {
+    margin: 0;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.benefit-item p {
+    margin: 0.3rem 0 0 0;
+    color: var(--text-light);
+}
+
+/* Installation Process / Timeline */
+.installation-process {
+    padding: 4rem 0;
+    background: var(--white);
+}
+
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-left: 100px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: var(--primary-color);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.timeline-badge {
+    position: absolute;
+    left: -85px;
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    box-shadow: 0 0 0 4px var(--white), 0 0 0 6px var(--primary-color);
+}
+
+.timeline-content {
+    background: var(--gray-light);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.timeline-content h5 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-time {
+    display: inline-block;
+    background: var(--secondary-color);
+    color: var(--white);
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+}
+
+/* FAQ Section */
+.faq-section {
+    padding: 4rem 0;
+    background: var(--gray-light);
+}
+
+.faq-section .collapsible {
+    border: none;
+    box-shadow: none;
+}
+
+.faq-section .collapsible-header {
+    background: var(--white);
+    border: none;
+    padding: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--gray-medium);
+}
+
+.faq-section .collapsible-header i {
+    color: var(--secondary-color);
+}
+
+.faq-section .collapsible-body {
+    background: var(--white);
+    border: none;
+    padding: 1.5rem;
+}
+
+/* CTA Note */
+.cta-note {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--text-light);
+}
+
+/* How It Works */
+.how-it-works {
+    padding: 4rem 0;
+    background: var(--gray-light);
+}
+
+.work-step {
+    text-align: center;
+    padding: 2rem 1rem;
+    position: relative;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 auto 1rem;
+}
+
+.work-step i.material-icons {
+    font-size: 4rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.work-step h5 {
+    color: var(--text-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.work-step p {
+    color: var(--text-light);
+}
+
+/* Benefits */
+.service-benefits {
+    padding: 4rem 0;
+    background: var(--white);
+}
+
+.benefit-card {
+    background: var(--gray-light);
+    padding: 2.5rem 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    transition: var(--transition);
+    height: 100%;
+    box-shadow: var(--shadow);
+    border: 2px solid transparent;
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-color);
+}
+
+.benefit-card i.material-icons {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.benefit-card h5 {
+    color: var(--text-dark);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.benefit-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* System Components */
+.system-components {
+    padding: 4rem 0;
+    background: var(--gray-light);
+}
+
+.component-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    height: 100%;
+}
+
+.component-card:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-hover);
+}
+
+.component-card i.material-icons {
+    font-size: 3.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.component-card h5 {
+    color: var(--text-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.component-card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* Ideal For Section */
+.ideal-for {
+    padding: 4rem 0;
+    background: var(--white);
+}
+
+.ideal-card {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    padding: 3rem 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    height: 100%;
+}
+
+.ideal-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.ideal-card i.material-icons {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.ideal-card h5 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.ideal-card p {
+    opacity: 0.9;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.ideal-card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.ideal-card ul li {
+    padding: 0.3rem 0;
+    opacity: 0.9;
+}
+
+/* Service CTA */
+.service-cta {
+    padding: 4rem 0;
+    background: var(--gray-light);
+}
+
+.service-cta h2 {
+    color: var(--text-dark);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.service-cta .flow-text {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.cta-buttons .btn {
+    background: var(--primary-color) !important;
+    padding: 0 2.5rem;
+}
+
+.cta-buttons .btn-outline {
+    background: transparent !important;
+    border: 2px solid var(--primary-color) !important;
+    color: var(--primary-color) !important;
+}
+
+.cta-buttons .btn-outline:hover {
+    background: var(--primary-color) !important;
+    color: var(--white) !important;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    font-weight: 700;
+    margin-bottom: 3rem;
+}
+
+/* Active Dropdown Link */
+.dropdown-content li > a.active-dropdown {
+    background-color: var(--primary-color) !important;
+    color: var(--white) !important;
+}
+
+.dropdown-content li > a.active-dropdown > i {
+    color: var(--white) !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .service-header {
+        padding: 6rem 0 3rem;
+    }
+    
+    .service-header h1 {
+        font-size: 2rem;
+        flex-direction: column;
+    }
+    
+    .service-header h1 i.material-icons {
+        font-size: 2.5rem;
+    }
+    
+    .service-overview h2,
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .work-step {
+        margin-bottom: 2rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .timeline {
+        padding-left: 80px;
+    }
+    
+    .timeline-badge {
+        left: -70px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}

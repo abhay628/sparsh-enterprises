@@ -21,8 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Carousel Functions
 function initializeCarousel() {
-    if (slides.length === 0) return;
-
     // Auto slide change every 5 seconds
     setInterval(() => {
         changeSlide(1);

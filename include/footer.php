@@ -26,9 +26,9 @@
                 <div class="footer-section">
                     <h4>Our Services</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Solar On-grid Systems</a></li>
-                        <li><a href="#">Solar Off-grid Systems</a></li>
-                        <li><a href="#">Solar Hybrid Systems</a></li>
+                        <li><a href="solar-ongrid">Solar On-grid Systems</a></li>
+                        <li><a href="solar-offgrid">Solar Off-grid Systems</a></li>
+                        <li><a href="solar-hybrid">Solar Hybrid Systems</a></li>
                         <li><a href="#">Electrical Services</a></li>
                     </ul>
                 </div>
@@ -66,11 +66,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize sidenav
-            var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems, {
-                edge: 'left',
-                draggable: true
-            });
+            M.Sidenav.init(document.querySelectorAll('.sidenav'), {edge: 'left', draggable: true});
+            M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'), {hover: false, coverTrigger: false, constrainWidth: false});
+            M.Collapsible.init(document.querySelectorAll('.collapsible'));
             
             // Initialize select
             var selectElems = document.querySelectorAll('select');

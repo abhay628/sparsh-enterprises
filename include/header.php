@@ -54,9 +54,15 @@
                     <ul class="right hide-on-med-and-down">
                         <?php $page = basename($_SERVER['PHP_SELF']); ?>
                         <li><a href="index" class="<?php if ($page == 'index') echo 'active'; ?>">Home</a></li>
+                        <li><a class="dropdown-trigger active" href="#!" data-target="services-dropdown">Our Services<i class="material-icons right">arrow_drop_down</i></a></li>
                         <li><a href="products" class="<?php if ($page == 'products') echo 'active'; ?>">Product Kit</a></li>
                         <li><a href="eligibility" class="<?php if ($page == 'eligibility') echo 'active'; ?>">Eligibility</a></li>
                         <li><a href="contact" class="<?php if ($page == 'contact') echo 'active'; ?>">Contact Us</a></li>
+                    </ul>
+                    <ul id="services-dropdown" class="dropdown-content">
+                        <li><a href="solar-ongrid" class="<?php if ($page == 'solar-ongrid') echo 'active'; ?>">Solar On-grid Systems</a></li>
+                        <li><a href="solar-offgrid" class="<?php if ($page == 'solar-offgrid') echo 'active';?>">Solar Off-grid Systems</a></li>
+                        <li><a href="solar-hybrid" class="<?php if ($page == 'solar-hybrid') echo 'active'; ?>">Solar Hybrid Systems</a></li>
                     </ul>
                 </div>
             </nav>
@@ -80,10 +86,24 @@
                     </a> -->
                 </div>
             </li>
-            <li><a href="index.html" class="waves-effect"><i class="material-icons">home</i>Home</a></li>
-            <li><a href="products.html" class="waves-effect"><i class="material-icons">shopping_cart</i>Product Kit</a></li>
-            <li><a href="eligibility.html" class="waves-effect"><i class="material-icons">check_circle</i>Eligibility</a></li>
-            <li><a href="contact.html" class="waves-effect"><i class="material-icons">contact_phone</i>Contact Us</a></li>
+            <li><a href="index" class="waves-effect"><i class="material-icons">home</i>Home</a></li>
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li class="active">
+                        <a class="collapsible-header waves-effect"><i class="material-icons">build</i>Our Services<i class="material-icons right">arrow_drop_down</i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="solar-ongrid" class="waves-effect active">Solar On-grid Systems</a></li>
+                                <li><a href="solar-offgrid" class="waves-effect">Solar Off-grid Systems</a></li>
+                                <li><a href="solar-hybrid" class="waves-effect">Solar Hybrid Systems</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="products" class="waves-effect"><i class="material-icons">shopping_cart</i>Product Kit</a></li>
+            <li><a href="eligibility" class="waves-effect"><i class="material-icons">check_circle</i>Eligibility</a></li>
+            <li><a href="contact" class="waves-effect"><i class="material-icons">contact_phone</i>Contact Us</a></li>
             <li><div class="divider"></div></li>
             <li><a href="tel:+919758497584" class="waves-effect"><i class="material-icons">phone</i>+91 97584 97584</a></li>
         </ul>

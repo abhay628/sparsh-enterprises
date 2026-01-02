@@ -4,12 +4,7 @@
     <section class="hero-section">
         <div class="carousel-container">
             <div class="carousel-slide active">
-                <img src="images/solar-banner-7.png" alt="Solar Installation" class="carousel-image">
-                <!-- <div class="carousel-content">
-                    <h1>Harness the Power of Solar Energy</h1>
-                    <p>Complete solar solutions for residential and commercial customers in Amroha</p>
-                    <a href="#appointment" class="cta-button">Get Free Quote</a>
-                </div> -->
+                <img src="images/solar-banner-9.png" alt="Solar Installation" class="carousel-image">
             </div>
             <div class="carousel-slide">
                 <img src="images/solar-banner-1.jpg" alt="Commercial Solar" class="carousel-image">
