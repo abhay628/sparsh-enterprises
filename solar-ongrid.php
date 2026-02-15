@@ -99,42 +99,42 @@
         <div class="container">
             <h2 class="section-title center-align">Why Choose On-grid Solar?</h2>
             <div class="row">
-                <div class="col s12 m6 l4">
+                <div class="col s12 m6 l4 margin-2-b">
                     <div class="benefit-card">
                         <i class="material-icons">account_balance_wallet</i>
                         <h5>Lower Initial Investment</h5>
                         <p>No battery storage required means significantly lower upfront costs. Save 40-50% compared to off-grid systems.</p>
                     </div>
                 </div>
-                <div class="col s12 m6 l4">
+                <div class="col s12 m6 l4 margin-2-b">
                     <div class="benefit-card">
                         <i class="material-icons">sync</i>
                         <h5>Net Metering Benefits</h5>
                         <p>Earn bill credits for excess power exported to grid. Offset 100% of your electricity costs with proper system sizing.</p>
                     </div>
                 </div>
-                <div class="col s12 m6 l4">
+                <div class="col s12 m6 l4 margin-2-b">
                     <div class="benefit-card">
                         <i class="material-icons">power</i>
                         <h5>24/7 Power Supply</h5>
                         <p>Grid connection ensures uninterrupted electricity even during low solar production or at night.</p>
                     </div>
                 </div>
-                <div class="col s12 m6 l4">
+                <div class="col s12 m6 l4 margin-2-b">
                     <div class="benefit-card">
                         <i class="material-icons">build</i>
                         <h5>Minimal Maintenance</h5>
                         <p>Simple system with fewer components. Just clean panels twice a year and enjoy hassle-free operation.</p>
                     </div>
                 </div>
-                <div class="col s12 m6 l4">
+                <div class="col s12 m6 l4 margin-2-b">
                     <div class="benefit-card">
                         <i class="material-icons">trending_up</i>
                         <h5>Best Return on Investment</h5>
                         <p>3-5 year payback period with government subsidies. Save ₹20-30 lakhs over 25 years on electricity bills.</p>
                     </div>
                 </div>
-                <div class="col s12 m6 l4">
+                <div class="col s12 m6 l4 margin-2-b">
                     <div class="benefit-card">
                         <i class="material-icons">eco</i>
                         <h5>Environmental Impact</h5>

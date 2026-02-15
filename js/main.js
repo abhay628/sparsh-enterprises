@@ -89,13 +89,19 @@ function initializeNavigation() {
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            const href = this.getAttribute('href');
+            
+            // Skip for dropdowns (#!) or empty anchors (#)
+            if (href === '#' || href === '#!') return;
+
+            try {
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            } catch (err) {
+                // Ignore invalid selectors
             }
         });
     });
@@ -125,7 +131,7 @@ function updateActiveNavigation() {
     navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}` || 
-            (current === '' && link.getAttribute('href') === 'index.html')) {
+            (current === '' && link.getAttribute('href') === 'index')) {
             link.classList.add('active');
         }
     });

@@ -52,9 +52,13 @@
                         <i class="material-icons">menu</i>
                     </a>
                     <ul class="right hide-on-med-and-down">
-                        <?php $page = basename($_SERVER['PHP_SELF']); ?>
+                        <?php 
+                            $page = basename($_SERVER['PHP_SELF'], '.php'); 
+                            $services = ['solar-ongrid', 'solar-offgrid', 'solar-hybrid'];
+                            $isServicesActive = in_array($page, $services) ? 'active' : '';
+                        ?>
                         <li><a href="index" class="<?php if ($page == 'index') echo 'active'; ?>">Home</a></li>
-                        <li><a class="dropdown-trigger active" href="#!" data-target="services-dropdown">Our Services<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-trigger <?php echo $isServicesActive; ?>" href="#!" data-target="services-dropdown">Our Services<i class="material-icons right">arrow_drop_down</i></a></li>
                         <li><a href="products" class="<?php if ($page == 'products') echo 'active'; ?>">Product Kit</a></li>
                         <li><a href="eligibility" class="<?php if ($page == 'eligibility') echo 'active'; ?>">Eligibility</a></li>
                         <li><a href="contact" class="<?php if ($page == 'contact') echo 'active'; ?>">Contact Us</a></li>
@@ -75,7 +79,7 @@
                     <!-- <div class="background">
                         <img src="images/solar-hero-1.jpg" alt="Background">
                     </div> -->
-                    <a href="index.html">
+                    <a href="index">
                         <img class="circle" src="images/logo.png" alt="Logo">
                     </a>
                     <!-- <a href="index.html">
@@ -89,13 +93,13 @@
             <li><a href="index" class="waves-effect"><i class="material-icons">home</i>Home</a></li>
             <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
-                    <li class="active">
+                    <li class="<?php echo $isServicesActive; ?>">
                         <a class="collapsible-header waves-effect"><i class="material-icons">build</i>Our Services<i class="material-icons right">arrow_drop_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a href="solar-ongrid" class="waves-effect active">Solar On-grid Systems</a></li>
-                                <li><a href="solar-offgrid" class="waves-effect">Solar Off-grid Systems</a></li>
-                                <li><a href="solar-hybrid" class="waves-effect">Solar Hybrid Systems</a></li>
+                                <li><a href="solar-ongrid" class="waves-effect <?php if ($page == 'solar-ongrid') echo 'active'; ?>">Solar On-grid Systems</a></li>
+                                <li><a href="solar-offgrid" class="waves-effect <?php if ($page == 'solar-offgrid') echo 'active'; ?>">Solar Off-grid Systems</a></li>
+                                <li><a href="solar-hybrid" class="waves-effect <?php if ($page == 'solar-hybrid') echo 'active'; ?>">Solar Hybrid Systems</a></li>
                             </ul>
                         </div>
                     </li>

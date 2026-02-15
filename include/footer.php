@@ -29,7 +29,6 @@
                         <li><a href="solar-ongrid">Solar On-grid Systems</a></li>
                         <li><a href="solar-offgrid">Solar Off-grid Systems</a></li>
                         <li><a href="solar-hybrid">Solar Hybrid Systems</a></li>
-                        <li><a href="#">Electrical Services</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -41,7 +40,7 @@
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>+91-8395871001, +91-9258976855</span>
+                            <span>8395871001, 9258976855</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
@@ -51,7 +50,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 M/s Sparsh Enterprises. All rights reserved. | Site by <a href="https://www.thesparshenterprises.com/">Sparsh Enterprises</a></p>
+                <p>&copy; <?php echo date('Y') ?> M/s Sparsh Enterprises. All rights reserved. | Site by <a href="https://www.thesparshenterprises.com/">Sparsh Enterprises</a></p>
             </div>
         </div>
     </footer>

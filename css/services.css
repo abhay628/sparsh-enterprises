@@ -4,6 +4,10 @@
 
 
 /* Service Overview */
+.margin-2-b {
+    margin-bottom: 20px !important;
+}
+
 .service-overview {
     padding: 4rem 0;
     background: var(--white);
