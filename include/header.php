@@ -45,7 +45,7 @@
         <nav class="navbar-fixed">
             <nav class="white">
                 <div class="nav-wrapper container">
-                    <a href="index.php" class="brand-logo">
+                    <a href="index" class="brand-logo">
                         <img src="images/logo.png" alt="Sparsh Enterprises Logo" class="logo-img">
                     </a>
                     <a href="#" data-target="mobile-nav" class="sidenav-trigger">

@@ -100,10 +100,10 @@ class ContactForm {
 
     validatePhone(phoneInput) {
         const phone = phoneInput.value.trim();
-        const phoneRegex = /^[\d\s\-\+\(\)]{10,}$/;
+        const phoneRegex = /^\d{10}$/;
         
         if (phone && !phoneRegex.test(phone)) {
-            this.showInputError(phoneInput, 'Please enter a valid phone number');
+            this.showInputError(phoneInput, 'Please enter a valid 10-digit phone number');
             return false;
         }
         

@@ -2,8 +2,8 @@
 
 // Global Variables
 let currentSlideIndex = 0;
-const slides = document.querySelectorAll('.carousel-slide');
-const indicators = document.querySelectorAll('.indicator');
+let slides = [];
+let indicators = [];
 
 // DOM Elements
 const navToggle = document.getElementById('nav-toggle');
@@ -12,6 +12,8 @@ const appointmentForm = document.getElementById('appointmentForm');
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    slides = document.querySelectorAll('.carousel-slide');
+    indicators = document.querySelectorAll('.indicator');
     initializeCarousel();
     initializeNavigation();
     initializeForms();
@@ -52,23 +54,27 @@ function initializeCarousel() {
 }
 
 function changeSlide(direction) {
+    if (!slides.length) return;
+    
     slides[currentSlideIndex].classList.remove('active');
-    indicators[currentSlideIndex].classList.remove('active');
+    if (indicators[currentSlideIndex]) indicators[currentSlideIndex].classList.remove('active');
     
     currentSlideIndex = (currentSlideIndex + direction + slides.length) % slides.length;
     
     slides[currentSlideIndex].classList.add('active');
-    indicators[currentSlideIndex].classList.add('active');
+    if (indicators[currentSlideIndex]) indicators[currentSlideIndex].classList.add('active');
 }
 
 function currentSlide(index) {
+    if (!slides.length) return;
+
     slides[currentSlideIndex].classList.remove('active');
-    indicators[currentSlideIndex].classList.remove('active');
+    if (indicators[currentSlideIndex]) indicators[currentSlideIndex].classList.remove('active');
     
     currentSlideIndex = index - 1;
     
     slides[currentSlideIndex].classList.add('active');
-    indicators[currentSlideIndex].classList.add('active');
+    if (indicators[currentSlideIndex]) indicators[currentSlideIndex].classList.add('active');
 }
 
 // Navigation Functions
@@ -208,7 +214,7 @@ function validateForm(data) {
     // Phone validation
     if (data.phone && !isValidPhone(data.phone)) {
         const phoneInput = document.querySelector('[name="phone"]');
-        showInputError(phoneInput, 'Please enter a valid phone number');
+        showInputError(phoneInput, 'Please enter a valid 10-digit phone number');
         isValid = false;
     }
     
@@ -240,7 +246,7 @@ function validateInput(e) {
             break;
         case 'phone':
             if (!isValidPhone(value)) {
-                showInputError(input, 'Please enter a valid phone number');
+                showInputError(input, 'Please enter a valid 10-digit phone number');
             }
             break;
         case 'pincode':
@@ -438,7 +444,7 @@ function isValidEmail(email) {
 }
 
 function isValidPhone(phone) {
-    const phoneRegex = /^[\d\s\-\+\(\)]{10,}$/;
+    const phoneRegex = /^\d{10}$/;
     return phoneRegex.test(phone);
 }
 

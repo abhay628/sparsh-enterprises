@@ -4,7 +4,7 @@
     <section class="hero-section">
         <div class="carousel-container">
             <div class="carousel-slide active">
-                <img src="images/solar-banner-4.png" alt="Solar Installation" class="carousel-image" >
+                <img src="images/solar-banner-7.png" alt="Solar Installation" class="carousel-image" >
             </div>
             <div class="carousel-slide">
                 <img src="images/solar-banner-5.png" alt="Commercial Solar" class="carousel-image">

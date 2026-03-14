@@ -170,6 +170,7 @@ nav ul a.active {
     border-radius: 8px !important;
     margin-top: 0 !important;
     min-width: 250px !important;
+    color: black !important;
 }
 
 .dropdown-content li > a {
@@ -178,6 +179,16 @@ nav ul a.active {
     display: flex !important;
     align-items: center !important;
     transition: var(--transition) !important;
+}
+
+.dropdown-content li > a,
+.dropdown-content li > span {
+  color: black !important;
+}
+
+/* Selected item text */
+.select-dropdown li span {
+  color: black !important;
 }
 
 .dropdown-content li > a > i {
@@ -269,7 +280,7 @@ nav ul a.active {
     width: 100%;
     height: 100%;
     object-fit: fill;
-    filter: brightness(0.9);
+    /* filter: brightness(0.9); */
 }
 
 .carousel-content {

@@ -158,7 +158,7 @@
                     
                     <button type="submit" class="submit-btn">
                         <i class="fas fa-paper-plane"></i>
-                        Send Message
+                        Submit                    
                     </button>
                 </form>
             </div>
