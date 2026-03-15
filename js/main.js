@@ -157,7 +157,7 @@ function initializeForms() {
     });
 }
 
-function handleAppointmentSubmit(e) {
+async function handleAppointmentSubmit(e) {
     e.preventDefault();
     
     const formData = new FormData(appointmentForm);
@@ -173,23 +173,42 @@ function handleAppointmentSubmit(e) {
     const originalText = submitBtn.textContent;
     submitBtn.textContent = 'Processing...';
     submitBtn.disabled = true;
+    const convertedData = {
+        fullName: data.name,       // map 'name' → 'fullName'
+        email: data.email,
+        whatsapp: data.phone,      // map 'phone' → 'whatsapp'
+        monthlyBill: data.monthlyBill,
+        city: data.city,
+        pincode: data.pincode
+    };
+    console.log('Form data:', data);
     
-    // Simulate form submission (replace with actual API call)
-    setTimeout(() => {
-        // Reset form
-        appointmentForm.reset();
-        
-        // Show success message
-        showNotification('Thank you! Your appointment request has been submitted. We will contact you within 24 hours.', 'success');
-        
-        // Reset button
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-        
-        // Send email (simulate)
-        sendEmailNotification(data);
-        
-    }, 2000);
+    // Send email (simulate)
+      const result = await sendEmailNotification(convertedData);
+
+      if (result.status) {
+
+        showNotification(
+                result.message,
+                'success'
+            );
+
+            appointmentForm.reset();
+
+    } else {
+
+        showNotification(result.message || 'Submission failed', 'error');
+
+    }
+    // Reset form
+    appointmentForm.reset();
+    
+    // Reset button
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+    
+    
+   
 }
 
 function validateForm(data) {
@@ -300,32 +319,18 @@ function clearInputError(e) {
     input.style.borderColor = 'var(--gray-medium)';
 }
 
-function sendEmailNotification(data) {
-    // This is a simulation - in a real application, you would send this to your backend
-    console.log('Email notification data:', data);
+async function sendEmailNotification(data) {
+
+    const response = await fetch('api/enquiry', { 
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+
+    const result = await response.json();
+    return result;
     
-    // Example of what you would send to your backend:
-    const emailData = {
-        to: 'info@thesparshenterprises.com',
-        subject: 'New Solar Consultation Request',
-        body: `
-            New consultation request received:
-            
-            Name: ${data.name}
-            Email: ${data.email}
-            Phone: ${data.phone}
-            Monthly Bill: ${data.monthlyBill}
-            Pincode: ${data.pincode}
-            City: ${data.city}
-            
-            Please contact the customer within 24 hours.
-        `,
-        customerEmail: data.email,
-        customerName: data.name
-    };
     
-    // Simulate API call
-    console.log('Sending email notification...', emailData);
 }
 
 // Scroll Effects

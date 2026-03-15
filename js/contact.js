@@ -177,10 +177,22 @@ class ContactForm {
             const data = Object.fromEntries(formData);
             
             // Send email notification (simulate API call)
-            await this.sendEmailNotification(data);
-            
-            // Show success message
-            this.showNotification('Thank you! Your message has been sent successfully. We will contact you within 24 hours.', 'success');
+            const result = await this.sendEmailNotification(data);
+
+            if (result.status) {
+
+                this.showNotification(
+                    result.message,
+                    'success'
+                );
+
+                this.form.reset();
+
+            } else {
+
+                this.showNotification(result.message || 'Submission failed', 'error');
+
+            }
             
             // Reset form
             this.form.reset();
@@ -200,43 +212,42 @@ class ContactForm {
 
     async sendEmailNotification(data) {
         // Simulate API call delay
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        // await new Promise(resolve => setTimeout(resolve, 2000));
         
-        // In a real application, you would send this to your backend
-        const emailData = {
-            to: 'info@thesparshenterprises.com',
-            subject: 'New Solar Inquiry - ' + data.fullName,
-            body: `
-                New inquiry received from website:
+        // // In a real application, you would send this to your backend
+        // const emailData = {
+        //     to: 'info@thesparshenterprises.com',
+        //     subject: 'New Solar Inquiry - ' + data.fullName,
+        //     body: `
+        //         New inquiry received from website:
                 
-                Name: ${data.fullName}
-                Email: ${data.email}
-                WhatsApp: ${data.whatsapp}
-                Monthly Bill: ${data.monthlyBill}
-                Pincode: ${data.pincode}
-                City: ${data.city}
-                System Type: ${data.systemType || 'Not specified'}
-                Roof Area: ${data.roofArea || 'Not specified'}
-                Message: ${data.message || 'No message provided'}
-                Newsletter: ${data.newsletter ? 'Yes' : 'No'}
+        //         Name: ${data.fullName}
+        //         Email: ${data.email}
+        //         WhatsApp: ${data.whatsapp}
+        //         Monthly Bill: ${data.monthlyBill}
+        //         Pincode: ${data.pincode}
+        //         City: ${data.city}
+        //         System Type: ${data.systemType || 'Not specified'}
+        //         Roof Area: ${data.roofArea || 'Not specified'}
+        //         Message: ${data.message || 'No message provided'}
+        //         Newsletter: ${data.newsletter ? 'Yes' : 'No'}
                 
-                Please contact the customer within 24 hours.
-            `,
-            customerEmail: data.email,
-            customerName: data.fullName
-        };
+        //         Please contact the customer within 24 hours.
+        //     `,
+        //     customerEmail: data.email,
+        //     customerName: data.fullName
+        // };
         
-        console.log('Email notification data:', emailData);
+        // console.log('Email notification data:', emailData);
         
-        // Here you would typically make an API call to your backend
-        // Example:
-        // const response = await fetch('/api/contact', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(emailData)
-        // });
-        
-        return emailData;
+        const response = await fetch('api/enquiry', { 
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+        return result;
     }
 
     showNotification(message, type = 'info') {
