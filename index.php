@@ -147,7 +147,7 @@
                             <input type="email" id="apt-email" name="email" placeholder="Email Address *" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="apt-phone" name="phone" placeholder="WhatsApp Number *" required>
+                            <input type="tel" id="apt-phone" name="phone" placeholder="WhatsApp Number *" maxlength="10" required>
                         </div>
                         <div class="form-group">
                             <select id="apt-bill" name="monthlyBill" required>
@@ -161,10 +161,13 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="apt-pincode" name="pincode" placeholder="Pincode *" required>
+                            <input type="text" id="apt-pincode" name="pincode" maxlength="6" placeholder="Pincode *" onkeyup="pincodeCheck(this.value,'apt-pincode')" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="apt-city" name="city" placeholder="City *" required>
+                            <input type="text" id="apt-city" name="city" placeholder="City *" readonly required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="apt-state" name="state" placeholder="State *" readonly required>
                         </div>
                         <button type="submit" class="submit-btn">Book Free Consultation</button>
                     </form>

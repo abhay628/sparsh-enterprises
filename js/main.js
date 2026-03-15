@@ -27,22 +27,22 @@ function initializeCarousel() {
     setInterval(() => {
         changeSlide(1);
     }, 5000);
-    
+
     // Add touch/swipe support for mobile
     let touchStartX = 0;
     let touchEndX = 0;
-    
+
     const carousel = document.querySelector('.carousel-container');
-    
+
     carousel.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
     });
-    
+
     carousel.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].screenX;
         handleSwipe();
     });
-    
+
     function handleSwipe() {
         if (touchEndX < touchStartX - 50) {
             changeSlide(1); // Swipe left, go to next slide
@@ -55,12 +55,12 @@ function initializeCarousel() {
 
 function changeSlide(direction) {
     if (!slides.length) return;
-    
+
     slides[currentSlideIndex].classList.remove('active');
     if (indicators[currentSlideIndex]) indicators[currentSlideIndex].classList.remove('active');
-    
+
     currentSlideIndex = (currentSlideIndex + direction + slides.length) % slides.length;
-    
+
     slides[currentSlideIndex].classList.add('active');
     if (indicators[currentSlideIndex]) indicators[currentSlideIndex].classList.add('active');
 }
@@ -70,9 +70,9 @@ function currentSlide(index) {
 
     slides[currentSlideIndex].classList.remove('active');
     if (indicators[currentSlideIndex]) indicators[currentSlideIndex].classList.remove('active');
-    
+
     currentSlideIndex = index - 1;
-    
+
     slides[currentSlideIndex].classList.add('active');
     if (indicators[currentSlideIndex]) indicators[currentSlideIndex].classList.add('active');
 }
@@ -81,7 +81,7 @@ function currentSlide(index) {
 function initializeNavigation() {
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', toggleNavigation);
-        
+
         // Close menu when clicking on links
         const navLinks = navMenu.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
@@ -91,12 +91,12 @@ function initializeNavigation() {
             });
         });
     }
-    
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            
+
             // Skip for dropdowns (#!) or empty anchors (#)
             if (href === '#' || href === '#!') return;
 
@@ -111,7 +111,7 @@ function initializeNavigation() {
             }
         });
     });
-    
+
     // Active navigation highlighting
     window.addEventListener('scroll', updateActiveNavigation);
 }
@@ -124,7 +124,7 @@ function toggleNavigation() {
 function updateActiveNavigation() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
-    
+
     let current = '';
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
@@ -133,10 +133,10 @@ function updateActiveNavigation() {
             current = section.getAttribute('id');
         }
     });
-    
+
     navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}` || 
+        if (link.getAttribute('href') === `#${current}` ||
             (current === '' && link.getAttribute('href') === 'index')) {
             link.classList.add('active');
         }
@@ -148,7 +148,7 @@ function initializeForms() {
     if (appointmentForm) {
         appointmentForm.addEventListener('submit', handleAppointmentSubmit);
     }
-    
+
     // Add input validation styling
     const formInputs = document.querySelectorAll('.contact-form input, .contact-form select');
     formInputs.forEach(input => {
@@ -159,15 +159,15 @@ function initializeForms() {
 
 async function handleAppointmentSubmit(e) {
     e.preventDefault();
-    
+
     const formData = new FormData(appointmentForm);
     const data = Object.fromEntries(formData);
-    
+
     // Validate form data
     if (!validateForm(data)) {
         return;
     }
-    
+
     // Show loading state
     const submitBtn = appointmentForm.querySelector('.submit-btn');
     const originalText = submitBtn.textContent;
@@ -179,21 +179,21 @@ async function handleAppointmentSubmit(e) {
         whatsapp: data.phone,      // map 'phone' → 'whatsapp'
         monthlyBill: data.monthlyBill,
         city: data.city,
-        pincode: data.pincode
+        pincode: data.pincode,
+        state: data.state
     };
-    console.log('Form data:', data);
-    
-    // Send email (simulate)
-      const result = await sendEmailNotification(convertedData);
 
-      if (result.status) {
+    // Send email (simulate)
+    const result = await sendEmailNotification(convertedData);
+
+    if (result.status) {
 
         showNotification(
-                result.message,
-                'success'
-            );
+            result.message,
+            'success'
+        );
 
-            appointmentForm.reset();
+        appointmentForm.reset();
 
     } else {
 
@@ -202,19 +202,19 @@ async function handleAppointmentSubmit(e) {
     }
     // Reset form
     appointmentForm.reset();
-    
+
     // Reset button
     submitBtn.textContent = originalText;
     submitBtn.disabled = false;
-    
-    
-   
+
+
+
 }
 
 function validateForm(data) {
     const requiredFields = ['name', 'email', 'phone', 'monthlyBill', 'pincode', 'city'];
     let isValid = true;
-    
+
     requiredFields.forEach(field => {
         if (!data[field] || data[field].trim() === '') {
             const input = document.querySelector(`[name="${field}"]`);
@@ -222,28 +222,28 @@ function validateForm(data) {
             isValid = false;
         }
     });
-    
+
     // Email validation
     if (data.email && !isValidEmail(data.email)) {
         const emailInput = document.querySelector('[name="email"]');
         showInputError(emailInput, 'Please enter a valid email address');
         isValid = false;
     }
-    
+
     // Phone validation
     if (data.phone && !isValidPhone(data.phone)) {
         const phoneInput = document.querySelector('[name="phone"]');
         showInputError(phoneInput, 'Please enter a valid 10-digit phone number');
         isValid = false;
     }
-    
+
     // Pincode validation
     if (data.pincode && !isValidPincode(data.pincode)) {
         const pincodeInput = document.querySelector('[name="pincode"]');
         showInputError(pincodeInput, 'Please enter a valid 6-digit pincode');
         isValid = false;
     }
-    
+
     return isValid;
 }
 
@@ -251,12 +251,12 @@ function validateInput(e) {
     const input = e.target;
     const value = input.value.trim();
     const name = input.name;
-    
+
     if (value === '') {
         showInputError(input, 'This field is required');
         return;
     }
-    
+
     switch (name) {
         case 'email':
             if (!isValidEmail(value)) {
@@ -293,7 +293,7 @@ function validatePincode(pincode) {
 
 function showInputError(input, message) {
     clearInputError(input);
-    
+
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error-message';
     errorDiv.textContent = message;
@@ -303,7 +303,7 @@ function showInputError(input, message) {
         margin-top: 0.25rem;
         display: block;
     `;
-    
+
     input.style.borderColor = 'var(--error)';
     input.parentNode.appendChild(errorDiv);
 }
@@ -311,26 +311,26 @@ function showInputError(input, message) {
 function clearInputError(e) {
     const input = e.target || e;
     const errorDiv = input.parentNode.querySelector('.error-message');
-    
+
     if (errorDiv) {
         errorDiv.remove();
     }
-    
+
     input.style.borderColor = 'var(--gray-medium)';
 }
 
 async function sendEmailNotification(data) {
 
-    const response = await fetch('api/enquiry', { 
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
+    const response = await fetch('api/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
 
     const result = await response.json();
     return result;
-    
-    
+
+
 }
 
 // Scroll Effects
@@ -340,7 +340,7 @@ function initializeScrollEffects() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -348,7 +348,7 @@ function initializeScrollEffects() {
             }
         });
     }, observerOptions);
-    
+
     // Observe elements for animation
     const animateElements = document.querySelectorAll('.solar-card, .feature-item, .benefit-card, .product-category');
     animateElements.forEach(el => observer.observe(el));
@@ -358,7 +358,7 @@ function initializeScrollEffects() {
 function initializeAnimations() {
     // Counter animation for stats
     const statNumbers = document.querySelectorAll('.stat-number');
-    
+
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -367,7 +367,7 @@ function initializeAnimations() {
             }
         });
     }, { threshold: 0.5 });
-    
+
     statNumbers.forEach(stat => counterObserver.observe(stat));
 }
 
@@ -376,7 +376,7 @@ function animateCounter(element) {
     const suffix = element.textContent.replace(/\d/g, '');
     let current = 0;
     const increment = target / 50;
-    
+
     const timer = setInterval(() => {
         current += increment;
         if (current >= target) {
@@ -398,7 +398,7 @@ function showNotification(message, type = 'info') {
             <button class="notification-close">&times;</button>
         </div>
     `;
-    
+
     // Add styles
     notification.style.cssText = `
         position: fixed;
@@ -414,19 +414,19 @@ function showNotification(message, type = 'info') {
         transform: translateX(100%);
         transition: transform 0.3s ease;
     `;
-    
+
     document.body.appendChild(notification);
-    
+
     // Animate in
     setTimeout(() => {
         notification.style.transform = 'translateX(0)';
     }, 100);
-    
+
     // Auto remove after 5 seconds
     setTimeout(() => {
         removeNotification(notification);
     }, 5000);
-    
+
     // Close button
     notification.querySelector('.notification-close').addEventListener('click', () => {
         removeNotification(notification);
@@ -457,6 +457,65 @@ function isValidPincode(pincode) {
     const pincodeRegex = /^\d{6}$/;
     return pincodeRegex.test(pincode);
 }
+
+async function pincodeCheck(pinCode, pinId) {
+
+    if (isValidPincode(pinCode)) {
+
+        var data = {
+            pincode: pinCode
+        }
+        const response = await fetch('api/fetchPincode', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (result.status) {
+
+            if (pinId == "apt-pincode") {
+
+                document.getElementById('apt-city').value = result.city;
+                document.getElementById('apt-state').value = result.state;
+
+            } else if (pinId == "pincode") {
+
+                document.getElementById('city').value = result.city;
+                document.getElementById('state').value = result.state;
+            }
+
+
+        } else {
+            if (pinId == "apt-pincode") {
+
+                document.getElementById('apt-city').value = "";
+                document.getElementById('apt-state').value = "";
+
+            } else if (pinId == "pincode") {
+
+                document.getElementById('city').value = "";
+                document.getElementById('state').value = ""
+            }
+        }
+
+    } else {
+        if (pinId == "apt-pincode") {
+
+            document.getElementById('apt-city').value = "";
+            document.getElementById('apt-state').value = "";
+        } else if (pinId == "pincode") {
+
+            document.getElementById('city').value = "";
+            document.getElementById('state').value = "";
+        }
+
+    }
+
+}
+
+
 
 // Smooth scroll for better UX
 document.documentElement.style.scrollBehavior = 'smooth';

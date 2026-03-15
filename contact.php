@@ -96,7 +96,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="whatsapp">WhatsApp Number *</label>
-                            <input type="tel" id="whatsapp" name="whatsapp" placeholder="Enter your WhatsApp number" required>
+                            <input type="tel" id="whatsapp" name="whatsapp" placeholder="Enter your WhatsApp number" maxlength="10" required>
                         </div>
                         
                         <div class="form-group">
@@ -116,17 +116,22 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="pincode">Pincode *</label>
-                            <input type="text" id="pincode" name="pincode" placeholder="Enter your pincode" required>
+                            <input type="text" id="pincode" name="pincode" placeholder="Enter your pincode" onkeyup="pincodeCheck(this.value,'pincode')" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="city">City *</label>
-                            <input type="text" id="city" name="city" placeholder="Enter your city" required>
+                            <input type="text" id="city" name="city" placeholder="Enter your city" readonly required>
                         </div>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group">
+                            <label for="state">State *</label>
+                            <input type="text" id="state" name="state" placeholder="Enter your state" readonly required>
+                        </div>
+
+                         <div class="form-group">
                             <label for="systemType">Interested System Type</label>
                             <select id="systemType" name="systemType">
                                 <option value="">Select system type</option>
@@ -136,7 +141,9 @@
                                 <option value="not-sure">Not Sure - Need Advice</option>
                             </select>
                         </div>
-                        
+                    </div>
+                    
+                    <div class="form-row">                        
                         <div class="form-group">
                             <label for="roofArea">Approximate Roof Area (sq ft)</label>
                             <input type="number" id="roofArea" name="roofArea" placeholder="Enter roof area if known">

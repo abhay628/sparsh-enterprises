@@ -13,6 +13,7 @@ $email = $data['email'] ?? null;
 $whatsapp = $data['whatsapp'] ?? null;
 $monthly_bill = $data['monthlyBill'] ?? null;
 $city = $data['city'] ?? null;
+$state = $data['state'] ?? null;
 $pincode = $data['pincode'] ?? null;
 $planning_after_years = $data['planningAfterYears'] ?? null;
 
@@ -22,33 +23,50 @@ $system_type = !empty($data['systemType']) ? $data['systemType'] : null;
 $message = !empty($data['message']) ? $data['message'] : null;
 
 
+// Basic validation
+if (!$full_name || !$whatsapp) {
+    echo json_encode([
+        "status" => false,
+        "message" => "Name and WhatsApp number are required."
+    ]);
+    exit;
+}
+
+
 // Check duplicate whatsapp
 $check = $conn->prepare("SELECT id FROM enquiries WHERE whatsapp = ?");
 $check->bind_param("s", $whatsapp);
 $check->execute();
-$result = $check->get_result();
+$check->store_result();
 
-if ($result->num_rows > 0) {
+if ($check->num_rows > 0) {
 
     echo json_encode([
         "status" => false,
         "message" => "Thank you! An enquiry with this WhatsApp number already exists. Our team will contact you soon."
     ]);
+
+    $check->close(); // BONUS LINE
     exit;
 }
 
+$check->close();
+
+
+// Insert enquiry
 $stmt = $conn->prepare("INSERT INTO enquiries 
-(enquiry_id,full_name,email,whatsapp,monthly_bill,city,pincode,roof_area,system_type,message,planning_after_years)
-VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+(enquiry_id, full_name, email, whatsapp, monthly_bill, city, state, pincode, roof_area, system_type, message, planning_after_years)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
 $stmt->bind_param(
-    "sssssssissi",
+    "ssssssssssss",
     $enquiry_id,
     $full_name,
     $email,
     $whatsapp,
     $monthly_bill,
     $city,
+    $state,
     $pincode,
     $roof_area,
     $system_type,
@@ -72,4 +90,6 @@ if ($stmt->execute()) {
     ]);
 }
 
+$stmt->close();
+$conn->close();
 ?>
