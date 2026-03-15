@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sparsh Enterprises - Solar Solutions for Residential & Commercial</title>
-    <meta name="description" content="Leading solar company in Amroha offering complete solar solutions for residential and commercial customers. 12+ years of excellence in electrical services.">
-    <meta name="keywords" content="solar panels Amroha, solar company Amroha, solar installation, solar energy, residential solar, commercial solar">
-    <meta name="author" content="M/s Sparsh Enterprises">
-    <meta property="og:title" content="M/s Sparsh Enterprises - Solar Solutions">
-    <meta property="og:description" content="12+ years of excellence in electrical and solar services">
+    <title>Sparsh Enterprises | Best Solar Company in Amroha UP</title>
+    <meta name="description" content="Sparsh Enterprises provides end-to-end solar solutions in Amroha, Uttar Pradesh including rooftop solar installation, EPC services, and solar panel supply.">
+
+    <meta name="keywords" content="Sparsh Enterprises, solar company Amroha, solar installation Amroha, solar panel dealer Amroha, solar EPC services UP, solar panel installation Uttar Pradesh, rooftop solar Amroha">
+
+    <meta name="author" content="Sparsh Enterprises">
+    <meta property="og:title" content="Sparsh Enterprises - Solar Provider in Amroha">
+    <meta property="og:description" content="Complete solar energy solutions in Amroha. Rooftop solar installation, EPC services, and solar systems by Sparsh Enterprises.">
     <meta property="og:url" content="https://www.thesparshenterprises.com/">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="M/s Sparsh Enterprises">
-    
+    <meta property="og:site_name" content="The Sparsh Enterprises">
+
+
+    <!-- Twitter SEO -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sparsh Enterprises Solar Amroha">
+    <meta name="twitter:description" content="Best solar installation company in Amroha providing end-to-end solar solutions.">
+
+        
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
