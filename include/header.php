@@ -23,16 +23,17 @@
 
         
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0B8WSKXCKM"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-0B8WSKXCKM');
     </script>
     
     <!-- Google Search Console -->
-    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE">
+    <meta name="google-site-verification" content="R4_lzs4HaONMzMb6R0bUmFEeTuDTpseAoOXgiul7ruU" />
     
     <!-- Materialize CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
