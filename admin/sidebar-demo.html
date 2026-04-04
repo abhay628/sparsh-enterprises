@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Sidebar Demo - Solar CRM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sidebar-fixed.css">
+    <style>
+        .demo-content {
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        .demo-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .demo-button {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        .demo-button:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <script src="js/sidebar-fixed.js"></script>
+    <script src="js/main.js"></script>
+    
+    <div class="demo-content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="demo-card">
+                        <h1 class="display-4 fw-bold mb-4">
+                            <i class="fas fa-solar-panel me-3"></i>
+                            Solar CRM Portal
+                        </h1>
+                        <p class="lead mb-5">
+                            Experience the new and improved sidebar navigation with smooth collapse/expand functionality!
+                        </p>
+                        
+                        <div class="row mb-5">
+                            <div class="col-md-4 mb-3">
+                                <div class="text-center">
+                                    <i class="fas fa-chevron-left fa-3x mb-3"></i>
+                                    <h5>Smooth Toggle</h5>
+                                    <small>Click the chevron to collapse/expand</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="text-center">
+                                    <i class="fas fa-mobile-alt fa-3x mb-3"></i>
+                                    <h5>Mobile Ready</h5>
+                                    <small>Responsive design for all devices</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="text-center">
+                                    <i class="fas fa-save fa-3x mb-3"></i>
+                                    <h5>Persistent State</h5>
+                                    <small>Remembers your preference</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <button class="demo-button me-3" onclick="testSidebarToggle()">
+                                <i class="fas fa-exchange-alt me-2"></i>
+                                Test Toggle
+                            </button>
+                            <button class="demo-button me-3" onclick="testMobileView()">
+                                <i class="fas fa-mobile-alt me-2"></i>
+                                Mobile View
+                            </button>
+                            <button class="demo-button" onclick="testRefresh()">
+                                <i class="fas fa-sync-alt me-2"></i>
+                                Reset
+                            </button>
+                        </div>
+                        
+                        <div class="alert alert-info alert-transparent">
+                            <i class="fas fa-lightbulb me-2"></i>
+                            <strong>Pro Tip:</strong> Use <kbd>Alt + B</kbd> to quickly toggle the sidebar!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <div class="demo-card">
+                        <h4 class="mb-4"><i class="fas fa-cog me-2"></i>Quick Navigation</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <a href="admin-dashboard.html" class="btn btn-outline-light w-100">
+                                    <i class="fas fa-tachometer-alt me-2"></i>
+                                    Admin Dashboard
+                                </a>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <a href="customer-dashboard.html" class="btn btn-outline-light w-100">
+                                    <i class="fas fa-user me-2"></i>
+                                    Customer Dashboard
+                                </a>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <a href="complaints.html" class="btn btn-outline-light w-100">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>
+                                    Complaints
+                                </a>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <a href="project-management.html" class="btn btn-outline-light w-100">
+                                    <i class="fas fa-tools me-2"></i>
+                                    Projects
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function testSidebarToggle() {
+            if (typeof sidebarController !== 'undefined') {
+                sidebarController.toggle();
+                showNotification('Sidebar toggle triggered!', 'info');
+            } else {
+                showNotification('Sidebar controller not available', 'error');
+            }
+        }
+        
+        function testMobileView() {
+            // Simulate mobile view by resizing
+            const currentWidth = window.innerWidth;
+            if (currentWidth > 768) {
+                // Temporarily resize to mobile view
+                Object.defineProperty(window, 'innerWidth', {
+                    writable: true,
+                    configurable: true,
+                    value: 500
+                });
+                sidebarController.isMobile = true;
+                sidebarController.updateUI();
+                showNotification('Mobile view simulated!', 'success');
+                
+                // Restore after 3 seconds
+                setTimeout(() => {
+                    Object.defineProperty(window, 'innerWidth', {
+                        writable: true,
+                        configurable: true,
+                        value: currentWidth
+                    });
+                    sidebarController.isMobile = false;
+                    sidebarController.updateUI();
+                }, 3000);
+            } else {
+                sidebarController.openMobile();
+                showNotification('Mobile sidebar opened!', 'success');
+            }
+        }
+        
+        function testRefresh() {
+            localStorage.removeItem('sidebarCollapsed');
+            location.reload();
+        }
+        
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `position-fixed top-0 end-0 m-3 alert alert-${type === 'error' ? 'danger' : type} alert-dismissible fade show`;
+            notification.style.zIndex = '9999';
+            notification.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 3000);
+        }
+        
+        // Enhanced logging for debugging
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Fixed Sidebar Demo Loaded');
+            console.log('📱 Screen width:', window.innerWidth);
+            console.log('📊 Sidebar controller:', typeof sidebarController);
+            
+            if (typeof sidebarController !== 'undefined') {
+                console.log('🔧 Sidebar state:', {
+                    isCollapsed: sidebarController.isCollapsed,
+                    isMobile: sidebarController.isMobile
+                });
+            }
+        });
+    </script>
+</body>
+</html>

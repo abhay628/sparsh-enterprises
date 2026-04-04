@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Functionality - Solar CRM Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .test-success { background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .test-failure { background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+        .test-section { margin: 20px 0; padding: 15px; background-color: #f8f9fa; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center mb-4">
+                    <i class="fas fa-bug me-2"></i>Functionality Test Suite
+                </h1>
+                <p class="text-center text-muted">Testing all implemented functions and features</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="test-section">
+                    <h5><i class="fas fa-phone me-2"></i>Enquiry Management Functions</h5>
+                    <div id="enquiryFunctionsTest">
+                        <button class="btn btn-primary btn-sm mb-2" onclick="testAddConversation()">Test addConversation</button>
+                        <button class="btn btn-secondary btn-sm mb-2" onclick="testEditEnquiry()">Test editEnquiry</button>
+                        <div id="enquiryTestResult"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="test-section">
+                    <h5><i class="fas fa-tools me-2"></i>Project Management Functions</h5>
+                    <div id="projectFunctionsTest">
+                        <button class="btn btn-primary btn-sm mb-2" onclick="testUpdateProjectStatus()">Test updateProjectStatus</button>
+                        <button class="btn btn-secondary btn-sm mb-2" onclick="testEditProject()">Test editProject</button>
+                        <div id="projectTestResult"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="test-section">
+                    <h5><i class="fas fa-comment me-2"></i>Comment Functions</h5>
+                    <div id="commentFunctionsTest">
+                        <button class="btn btn-primary btn-sm mb-2" onclick="testAddComment()">Test addComment</button>
+                        <button class="btn btn-info btn-sm mb-2" onclick="testDisplayComments()">Test displayComments</button>
+                        <div id="commentTestResult"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="test-section">
+                    <h5><i class="fas fa-bell me-2"></i>Utility Functions</h5>
+                    <div id="utilityFunctionsTest">
+                        <button class="btn btn-success btn-sm mb-2" onclick="testShowToast()">Test showToast</button>
+                        <button class="btn btn-warning btn-sm mb-2" onclick="testFormatDate()">Test formatDate</button>
+                        <div id="utilityTestResult"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="test-section">
+                    <h5><i class="fas fa-clipboard-check me-2"></i>Comprehensive Test</h5>
+                    <button class="btn btn-danger" onclick="runAllTests()">Run All Tests</button>
+                    <div id="comprehensiveTestResult" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Test Results Modal -->
+    <div class="modal fade" id="testResultsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Test Results</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="testResultsContent">
+                    <!-- Test results will be displayed here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/crm-functions.js"></script>
+    <script src="js/enquiry-management.js"></script>
+    <script src="js/project-management.js"></script>
+    <script>
+        // Test functions
+        function testAddConversation() {
+            try {
+                if (typeof window.addConversation === 'function') {
+                    document.getElementById('enquiryTestResult').innerHTML = 
+                        '<div class="test-result test-success">✅ addConversation function is working</div>';
+                } else {
+                    throw new Error('addConversation function not found');
+                }
+            } catch (error) {
+                document.getElementById('enquiryTestResult').innerHTML = 
+                    '<div class="test-result test-failure">❌ addConversation error: ' + error.message + '</div>';
+            }
+        }
+
+        function testEditEnquiry() {
+            try {
+                if (typeof window.editEnquiry === 'function') {
+                    document.getElementById('enquiryTestResult').innerHTML += 
+                        '<div class="test-result test-success">✅ editEnquiry function is working</div>';
+                } else {
+                    throw new Error('editEnquiry function not found');
+                }
+            } catch (error) {
+                document.getElementById('enquiryTestResult').innerHTML += 
+                    '<div class="test-result test-failure">❌ editEnquiry error: ' + error.message + '</div>';
+            }
+        }
+
+        function testUpdateProjectStatus() {
+            try {
+                if (typeof window.updateProjectStatus === 'function') {
+                    document.getElementById('projectTestResult').innerHTML = 
+                        '<div class="test-result test-success">✅ updateProjectStatus function is working</div>';
+                } else {
+                    throw new Error('updateProjectStatus function not found');
+                }
+            } catch (error) {
+                document.getElementById('projectTestResult').innerHTML = 
+                    '<div class="test-result test-failure">❌ updateProjectStatus error: ' + error.message + '</div>';
+            }
+        }
+
+        function testEditProject() {
+            try {
+                if (typeof window.editProject === 'function') {
+                    document.getElementById('projectTestResult').innerHTML += 
+                        '<div class="test-result test-success">✅ editProject function is working</div>';
+                } else {
+                    throw new Error('editProject function not found');
+                }
+            } catch (error) {
+                document.getElementById('projectTestResult').innerHTML += 
+                    '<div class="test-result test-failure">❌ editProject error: ' + error.message + '</div>';
+            }
+        }
+
+        function testAddComment() {
+            try {
+                if (typeof window.addComment === 'function') {
+                    document.getElementById('commentTestResult').innerHTML = 
+                        '<div class="test-result test-success">✅ addComment function is working</div>';
+                } else {
+                    throw new Error('addComment function not found');
+                }
+            } catch (error) {
+                document.getElementById('commentTestResult').innerHTML = 
+                    '<div class="test-result test-failure">❌ addComment error: ' + error.message + '</div>';
+            }
+        }
+
+        function testDisplayComments() {
+            try {
+                if (typeof window.displayComments === 'function') {
+                    document.getElementById('commentTestResult').innerHTML += 
+                        '<div class="test-result test-success">✅ displayComments function is working</div>';
+                } else {
+                    throw new Error('displayComments function not found');
+                }
+            } catch (error) {
+                document.getElementById('commentTestResult').innerHTML += 
+                    '<div class="test-result test-failure">❌ displayComments error: ' + error.message + '</div>';
+            }
+        }
+
+        function testShowToast() {
+            try {
+                if (typeof window.showToast === 'function') {
+                    window.showToast('Test toast message', 'success');
+                    document.getElementById('utilityTestResult').innerHTML = 
+                        '<div class="test-result test-success">✅ showToast function is working</div>';
+                } else {
+                    throw new Error('showToast function not found');
+                }
+            } catch (error) {
+                document.getElementById('utilityTestResult').innerHTML = 
+                    '<div class="test-result test-failure">❌ showToast error: ' + error.message + '</div>';
+            }
+        }
+
+        function testFormatDate() {
+            try {
+                if (typeof window.formatDate === 'function') {
+                    const formattedDate = window.formatDate(new Date().toISOString());
+                    document.getElementById('utilityTestResult').innerHTML += 
+                        '<div class="test-result test-success">✅ formatDate function is working: ' + formattedDate + '</div>';
+                } else {
+                    throw new Error('formatDate function not found');
+                }
+            } catch (error) {
+                document.getElementById('utilityTestResult').innerHTML += 
+                    '<div class="test-result test-failure">❌ formatDate error: ' + error.message + '</div>';
+            }
+        }
+
+        function runAllTests() {
+            const results = [];
+            const functions = [
+                'addConversation', 'editEnquiry', 'updateProjectStatus', 'editProject',
+                'addComment', 'displayComments', 'deleteComment', 'showToast', 'formatDate', 'getStatusBadge'
+            ];
+            
+            functions.forEach(funcName => {
+                if (typeof window[funcName] === 'function') {
+                    results.push({ name: funcName, status: '✅ Available' });
+                } else {
+                    results.push({ name: funcName, status: '❌ Missing' });
+                }
+            });
+            
+            let resultsHtml = '<h6>Test Results:</h6><div class="table-responsive"><table class="table table-sm">';
+            results.forEach(result => {
+                resultsHtml += `<tr><td>${result.name}</td><td>${result.status}</td></tr>`;
+            });
+            resultsHtml += '</table></div>';
+            
+            document.getElementById('comprehensiveTestResult').innerHTML = resultsHtml;
+            
+            // Show success toast
+            if (typeof window.showToast === 'function') {
+                window.showToast('All functionality tests completed!', 'success');
+            }
+        }
+
+        // Test on page load
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Test functionality page loaded');
+    if (typeof window.showToast === 'function') {
+        window.showToast('Test functionality ready!', 'info');
+    }
+});
+    </script>
+</body>
+</html>

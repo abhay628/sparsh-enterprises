@@ -1,9 +1,9 @@
 RewriteEngine On
-RewriteBase /sparsh-enterprises/
+RewriteBase /
 
 # Redirect .php to clean URL
-RewriteCond %{THE_REQUEST} \s/+sparsh-enterprises/(.+?)\.php [NC]
-RewriteRule ^(.+)\.php$ /sparsh-enterprises/$1 [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+(.*?)\.php[\s?] [NC]
+RewriteRule ^(.*?)\.php$ /$1 [R=301,L]
 
 # Internally map clean URLs to .php
 RewriteCond %{REQUEST_FILENAME} !-d

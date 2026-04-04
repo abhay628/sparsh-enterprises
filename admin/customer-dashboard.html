@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard - Solar CRM Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sidebar-fixed.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-solar-panel me-2"></i>
+                Solar CRM Portal
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showProjectDetails()">
+                            <i class="fas fa-info-circle me-1"></i>Project Details
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showGenerationHistory()">
+                            <i class="fas fa-history me-1"></i>Generation History
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="complaints.html">
+                            <i class="fas fa-exclamation-triangle me-1"></i>Raise Complaint
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="logout()">
+                            <i class="fas fa-sign-out-alt me-1"></i>Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <div class="bg-primary text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="display-6 fw-bold mb-0">
+                        <i class="fas fa-user me-3"></i>
+                        Customer Dashboard
+                    </h1>
+                    <p class="lead mb-0">Welcome back, <span id="customerName">John Doe</span></p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="d-flex gap-2 justify-content-end">
+                        <span class="badge bg-success fs-6">Role: Customer</span>
+                        <span class="badge bg-info fs-6" id="currentDate"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Content -->
+    <div class="container my-5">
+        <!-- Project Overview Cards -->
+        <div class="row g-4 mb-5">
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm bg-gradient-primary text-white">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-solar-panel fa-3x opacity-75"></i>
+                        </div>
+                        <h2 class="fw-bold mb-1" id="systemCapacity">5.5 kW</h2>
+                        <p class="mb-2">System Capacity</p>
+                        <small class="opacity-75">Grid-Tied System</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm bg-gradient-success text-white">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-bolt fa-3x opacity-75"></i>
+                        </div>
+                        <h2 class="fw-bold mb-1" id="todayGeneration">28.5</h2>
+                        <p class="mb-2">Today's Generation (kWh)</p>
+                        <small class="opacity-75">+5% vs yesterday</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm bg-gradient-info text-white">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-calendar-check fa-3x opacity-75"></i>
+                        </div>
+                        <h2 class="fw-bold mb-1" id="warrantyStatus">4.2</h2>
+                        <p class="mb-2">Years Remaining</p>
+                        <small class="opacity-75">Warranty expires 2028</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Generation Charts Row -->
+        <div class="row g-4 mb-5">
+            <div class="col-lg-8">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-light">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-chart-line me-2 text-primary"></i>
+                            Daily Generation Trend
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="dailyGenerationChart" style="height: 300px;"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-light">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-chart-pie me-2 text-success"></i>
+                            Monthly Summary
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center mb-3">
+                            <div class="col-6">
+                                <h4 class="text-primary fw-bold">765 kWh</h4>
+                                <small class="text-muted">This Month</small>
+                            </div>
+                            <div class="col-6">
+                                <h4 class="text-success fw-bold">₹4,590</h4>
+                                <small class="text-muted">Monthly Savings</small>
+                            </div>
+                        </div>
+                        <canvas id="monthlySummaryChart" style="height: 200px;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Status & Alerts -->
+        <div class="row g-4 mb-5">
+            <div class="col-lg-6">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-light">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-info-circle me-2 text-info"></i>
+                            System Status
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="status-indicator bg-success me-3"></div>
+                                    <div>
+                                        <strong>Inverter</strong>
+                                        <br><small class="text-muted">Online</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="status-indicator bg-success me-3"></div>
+                                    <div>
+                                        <strong>Panels</strong>
+                                        <br><small class="text-muted">Normal</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="status-indicator bg-warning me-3"></div>
+                                    <div>
+                                        <strong>Grid Connection</strong>
+                                        <br><small class="text-muted">Fluctuating</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="status-indicator bg-success me-3"></div>
+                                    <div>
+                                        <strong>Monitoring</strong>
+                                        <br><small class="text-muted">Active</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-light">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-exclamation-triangle me-2 text-warning"></i>
+                            Recent Alerts
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning alert-sm mb-2">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            <strong>Low Generation:</strong> Yesterday's generation was 15% below expected
+                        </div>
+                        <div class="alert alert-info alert-sm mb-2">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Maintenance Due:</strong> Q1 service scheduled for next week
+                        </div>
+                        <div class="alert alert-success alert-sm mb-0">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <strong>System Update:</strong> Firmware updated successfully
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Maintenance Schedule & Complaints -->
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-wrench me-2 text-secondary"></i>
+                            Maintenance Schedule
+                        </h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Year</th>
+                                        <th>Cycle</th>
+                                        <th>Scheduled</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="maintenanceTable">
+                                    <tr>
+                                        <td colspan="4" class="text-center py-4">
+                                            <div class="spinner-border text-primary" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-exclamation-circle me-2 text-danger"></i>
+                            My Complaints
+                        </h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Priority</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="complaintsTable">
+                                    <tr>
+                                        <td colspan="3" class="text-center py-4">
+                                            <div class="spinner-border text-primary" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Details Modal -->
+    <div class="modal fade" id="projectDetailsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Project Details
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="projectDetailsContent">
+                    <!-- Project details will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/customer-dashboard.js"></script>
+<script src="js/sidebar-fixed.js"></script>
+</body>
+</html>

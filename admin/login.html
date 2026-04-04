@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Solar CRM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            max-width: 900px;
+            width: 100%;
+            min-height: 500px;
+        }
+        
+        .login-left {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+        }
+        
+        .login-right {
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .brand-logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .brand-description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .login-form {
+            width: 100%;
+            max-width: 350px;
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .form-header h4 {
+            color: var(--dark-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-header p {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .input-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .input-group-text {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #6c757d;
+            z-index: 10;
+        }
+        
+        .form-control {
+            padding-left: 45px;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+            height: 50px;
+        }
+        
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        
+        .btn-login {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .role-selector {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .role-btn {
+            flex: 1;
+            padding: 0.5rem;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        
+        .role-btn.active {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .role-btn:hover:not(.active) {
+            border-color: #adb5bd;
+        }
+        
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 2rem;
+        }
+        
+        .features-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .features-list i {
+            margin-right: 0.5rem;
+            color: #28a745;
+        }
+        
+        .error-message {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+        
+        .success-message {
+            color: #28a745;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .login-container {
+                margin: 1rem;
+                max-width: none;
+            }
+            
+            .login-left {
+                padding: 2rem;
+                text-align: center;
+            }
+            
+            .login-right {
+                padding: 2rem;
+            }
+            
+            .brand-logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="row g-0">
+            <!-- <div class="col-md-6 login-left">
+                <div class="text-center">
+                    <div class="brand-logo">
+                        <i class="fas fa-solar-panel me-2"></i>
+                        Solar CRM
+                    </div>
+                    <p class="brand-description">
+                        Complete Solar Project Management System
+                    </p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Enquiry to Installation Tracking</li>
+                        <li><i class="fas fa-check"></i> 5-Year Maintenance Management</li>
+                        <li><i class="fas fa-check"></i> Real-time Generation Monitoring</li>
+                        <li><i class="fas fa-check"></i> SLA-based Complaint Resolution</li>
+                        <li><i class="fas fa-check"></i> Customer Portal Access</li>
+                    </ul>
+                </div>
+            </div> -->
+            <div class="col-md-6 login-right">
+                <div class="login-form">
+                    <div class="form-header">
+                        <div class="brand-logo" style="color: grey">
+                            <i class="fas fa-solar-panel me-2"></i>
+                            Sparsh Enterprises
+                        </div>
+                        <h4>Welcome Back</h4>
+                        <p>Sign in to access your account</p>
+                    </div>
+                    
+                    <div class="role-selector">
+                        <div class="role-btn active" data-role="ADMIN">
+                            <i class="fas fa-user-shield"></i><br>Admin
+                        </div>
+                        <div class="role-btn" data-role="OPERATOR">
+                            <i class="fas fa-user-cog"></i><br>Operator
+                        </div>
+                        <div class="role-btn" data-role="CUSTOMER">
+                            <i class="fas fa-user"></i><br>Customer
+                        </div>
+                    </div>
+                    
+                    <form id="loginForm">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            <input type="email" class="form-control" id="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="error-message" id="emailError">Please enter a valid email address</div>
+                        
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                            <input type="password" class="form-control" id="password" placeholder="Password" required>
+                            <span class="input-group-text" style="right: 15px; left: auto; cursor: pointer;" onclick="togglePassword()">
+                                <i class="fas fa-eye" id="toggleIcon"></i>
+                            </span>
+                        </div>
+                        <div class="error-message" id="passwordError">Password must be at least 6 characters</div>
+                        
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Remember me</label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-login text-white w-100 mb-3">
+                            <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                        </button>
+                        
+                        <div class="text-center">
+                            <a href="#" class="text-decoration-none" onclick="showForgotPassword()">Forgot Password?</a>
+                        </div>
+                        
+                        <div class="success-message" id="successMessage">
+                            Login successful! Redirecting...
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        let currentRole = 'ADMIN';
+        
+        // Role selection
+        document.querySelectorAll('.role-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentRole = this.dataset.role;
+                
+                // Auto-fill demo credentials based on role
+                fillDemoCredentials();
+            });
+        });
+        
+        function fillDemoCredentials() {
+            const credentials = {
+                'ADMIN': { email: 'admin@solarcrm.com', password: 'admin123' },
+                'OPERATOR': { email: 'operator@solarcrm.com', password: 'operator123' },
+                'CUSTOMER': { email: 'customer@example.com', password: 'customer123' }
+            };
+            
+            const creds = credentials[currentRole];
+            document.getElementById('email').value = creds.email;
+            document.getElementById('password').value = creds.password;
+        }
+        
+        // Form validation and submission
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(msg => msg.style.display = 'none');
+            document.getElementById('successMessage').style.display = 'none';
+            
+            // Validation
+            let isValid = true;
+            
+            if (!email || !isValidEmail(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (!password || password.length < 6) {
+                document.getElementById('passwordError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (!isValid) return;
+            
+            // Simulate API call
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Signing In...';
+            submitBtn.disabled = true;
+            
+            try {
+                // Simulate JWT authentication
+                const response = await simulateLogin(email, password, currentRole);
+                
+                if (response.success) {
+                    // Store JWT token and user info
+                    localStorage.setItem('solar_crm_token', response.token);
+                    localStorage.setItem('solar_crm_user', JSON.stringify(response.user));
+                    localStorage.setItem('solar_crm_role', currentRole);
+                    
+                    document.getElementById('successMessage').style.display = 'block';
+                    
+                    // Redirect based on role
+                    setTimeout(() => {
+                        let redirectUrl;
+                        switch (currentRole) {
+                            case 'ADMIN':
+                                redirectUrl = 'admin-dashboard.html';
+                                break;
+                            case 'OPERATOR':
+                                redirectUrl = 'enquiry-management.html';
+                                break;
+                            case 'CUSTOMER':
+                                redirectUrl = 'customer-dashboard.html';
+                                break;
+                            default:
+                                redirectUrl = 'admin-dashboard.html';
+                        }
+                        window.location.href = redirectUrl;
+                    }, 1500);
+                } else {
+                    throw new Error('Invalid credentials');
+                }
+            } catch (error) {
+                // Show error message
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'alert alert-danger alert-sm mt-3';
+                errorDiv.textContent = 'Invalid email or password. Please try again.';
+                e.target.appendChild(errorDiv);
+                
+                setTimeout(() => {
+                    if (e.target.contains(errorDiv)) {
+                        e.target.removeChild(errorDiv);
+                    }
+                }, 5000);
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+        
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        async function simulateLogin(email, password, role) {
+            // Simulate API delay
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            // Simulate JWT token
+            const token = btoa(JSON.stringify({
+                userId: Math.random().toString(36).substr(2, 9),
+                email: email,
+                role: role,
+                exp: Date.now() + (24 * 60 * 60 * 1000) // 24 hours
+            }));
+            
+            return {
+                success: true,
+                token: token,
+                user: {
+                    id: Math.random().toString(36).substr(2, 9),
+                    email: email,
+                    role: role,
+                    full_name: role.charAt(0) + role.slice(1).toLowerCase() + ' User'
+                }
+            };
+        }
+        
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.className = 'fas fa-eye-slash';
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.className = 'fas fa-eye';
+            }
+        }
+        
+        function showForgotPassword() {
+            alert('Password reset functionality will be implemented. Please contact your administrator.');
+        }
+        
+        function logout() {
+            localStorage.removeItem('solar_crm_token');
+            localStorage.removeItem('solar_crm_user');
+            localStorage.removeItem('solar_crm_role');
+            window.location.href = 'login.html';
+        }
+        
+        // Initialize with demo credentials
+        fillDemoCredentials();
+    </script>
+</body>
+</html>
